@@ -1,0 +1,7 @@
+@Hababk.Api_HostAddress = http://localhost:5150
+
+GET {{Hababk.Api_HostAddress}}/
+
+
+
+###
