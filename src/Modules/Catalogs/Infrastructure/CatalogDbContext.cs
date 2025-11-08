@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Hababk.Modules.Catalogs.Infrastructure;
 
-public class CatalogDbContext :DbContext,IUnitOfWork
+public class CatalogDbContext :DbContext , IUnitOfWork
 {
     private const string DefaultSchema = "Catalog";
     private readonly IMediator _mediator;
