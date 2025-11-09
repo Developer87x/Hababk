@@ -1,6 +1,5 @@
-using System.Windows.Input;
-using Hababk.BuildingBlocks.Application;
 using Hababk.Modules.Catalogs.Infrastructure;
+using Hababk.Modules.Identities.Infrastructure;
 using Hababk.Modules.Stores.Application.Commands;
 using Hababk.Modules.Stores.Application.Queries;
 using Hababk.Modules.Stores.Domain.Entities;
@@ -23,6 +22,7 @@ builder.Services.AddMediatR(cfg =>
 
 builder.Services.AddDbContext<StoreDbContext>(m => m.UseNpgsql(builder.Configuration.GetConnectionString("defaultConnection"), b => b.MigrationsHistoryTable("__EFMigrationsHistory", "Store")));
 builder.Services.AddDbContext<CatalogDbContext>(m=>m.UseNpgsql(builder.Configuration.GetConnectionString("defaultConnection"),b=>b.MigrationsHistoryTable("__EFMigrationsHistory", "Catalog")));
+builder.Services.AddDbContext<IdentitiesDbContext>(m=>m.UseNpgsql(builder.Configuration.GetConnectionString("defaultConnection"),b=>b.MigrationsHistoryTable("__EFMigrationsHistory", "Identity")));
 builder.Services.AddScoped<IStoreRepository, StoreRepository>();
 builder.Services.AddScoped<IStoreQueries>(s =>
     new StoreQueries(builder.Configuration.GetConnectionString("defaultConnection")));

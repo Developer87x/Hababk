@@ -3,9 +3,9 @@ using Hababk.Modules.Identities.Domain.Entities;
 
 namespace Hababk.Modules.Identities.Domain.DomainEvents;
 
-public class CreatedUserDomainEvent(User user) : IDomainEvent
+public class CreatedRoleDomainEvent(Role role) : IDomainEvent
 {
-    public Guid Id { get; } = user.Id;
+    public Guid Id { get; } = role.Id;
     public DateTime CreatedAt { get; } = DateTime.UtcNow;
-    public User? User { get; } = user;
+    public Role? Role { get; } = role;
 }

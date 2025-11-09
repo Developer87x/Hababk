@@ -22,6 +22,9 @@
     <ProjectReference Include="..\Modules\Catalogs\Infrastructure\Hababk.Modules.Catalogs.Infrastructure.csproj" />
     <ProjectReference Include="..\Modules\Stores\Application\Hababk.Modules.Stores.Application.csproj" />
     <ProjectReference Include="..\Modules\Stores\Infrastructure\Hababk.Modules.Stores.Infrastructure.csproj" />
+    <ProjectReference Include="..\Modules\Identities\Domain\Hababk.Modules.Identities.Domain.csproj" />
+    <ProjectReference Include="..\Modules\Identities\Application\Hababk.Modules.Identities.Application.csproj" />
+    <ProjectReference Include="..\Modules\Identities\Infrastructure\Hababk.Modules.Identities.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

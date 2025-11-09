@@ -5,20 +5,15 @@ using Npgsql;
 
 namespace Hababk.Modules.Stores.Application.Queries;
 
-public class StoreQueries : IStoreQueries
+public class StoreQueries(string? connectionString) : IStoreQueries
 {
-    private readonly string _connectionString;
+    private readonly string _connectionString = connectionString ?? throw new ArgumentNullException(nameof(connectionString));
 
-    public StoreQueries(string? connectionString)
-    {
-        _connectionString = connectionString;
-    }
-    
     public async Task<StoreDto?> GetByIdAsync(Guid id)
     {
-        await using var connection =  new SqlConnection(_connectionString);
+        await using var connection =  new NpgsqlConnection(_connectionString);
         connection.Open();
-        var result = connection.QueryAsync<StoreDto>($"SELECT * FROM Stores WHERE Id=@Id",new {Id = id});
+        var result = connection.QueryAsync<StoreDto>($"SELECT * FROM \"Store\".\"Stores\" WHERE Id=@Id",new {Id = id});
         return result.Result.FirstOrDefault();
     }
 
