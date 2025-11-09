@@ -14,6 +14,8 @@
     <ProjectReference Include="..\..\..\BuildingBlocks\Domain\Hababk.BuildingBlocks.Domain.csproj" />
     <ProjectReference Include="..\..\..\BuildingBlocks\Application\Hababk.BuildingBlocks.Application.csproj" />
     <ProjectReference Include="..\..\..\BuildingBlocks\Infrastructure\Hababk.BuildingBlocks.Infrastructure.csproj" />
+    <ProjectReference Include="..\Domain\Hababk.Modules.Identities.Domain.csproj" />
+    <ProjectReference Include="..\Application\Hababk.Modules.Identities.Application.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,6 @@
 using Hababk.BuildingBlocks.Domain;
+using Hababk.Modules.Identities.Domain.Entities;
+using Infrastructure.Configurations.EntityTypedConfigurations;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,8 +9,9 @@ namespace Hababk.Modules.Identities.Infrastructure;
 public class IdentitiesDbContext : DbContext, IUnitOfWork
 {
     private readonly IMediator _mediator;
-    private const string Schema = "Identity";
-
+    public const string Schema = "Identity";
+    public DbSet<User> Users { get; set; }
+    public DbSet<Role> Roles { get; set; }
     public IdentitiesDbContext(DbContextOptions<IdentitiesDbContext> options, IMediator mediator) : base(options)
     {
         _mediator = mediator;
@@ -23,7 +26,10 @@ public class IdentitiesDbContext : DbContext, IUnitOfWork
         {
             await _mediator.Publish(domainEvent, cancellationToken);
         }
-
         return await base.SaveChangesAsync(cancellationToken) > 0;
+    }
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.ApplyConfiguration(new UserEntityTypedConfigurations());
     }
 }
