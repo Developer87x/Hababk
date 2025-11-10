@@ -35,5 +35,5 @@ public abstract class ValueObject
         return GetEqualityComponents().Select(x => x !=null ? x.GetHashCode() : 0).Aggregate((x, y) => x ^ y);  
     }
 
-    public ValueObject Copy => this.MemberwiseClone() as ValueObject;
+    public ValueObject? Copy => this.MemberwiseClone() as ValueObject;
 }
