@@ -1,3 +1,4 @@
+using Ha;
 using Hababk.Modules.Catalogs.Infrastructure;
 using Hababk.Modules.Identities.Infrastructure;
 using Hababk.Modules.Stores.Application.Commands;
@@ -20,12 +21,8 @@ builder.Services.AddMediatR(cfg =>
 
 //0550198724
 
-builder.Services.AddDbContext<StoreDbContext>(m => m.UseNpgsql(builder.Configuration.GetConnectionString("defaultConnection"), b => b.MigrationsHistoryTable("__EFMigrationsHistory", "Store")));
-builder.Services.AddDbContext<CatalogDbContext>(m=>m.UseNpgsql(builder.Configuration.GetConnectionString("defaultConnection"),b=>b.MigrationsHistoryTable("__EFMigrationsHistory", "Catalog")));
-builder.Services.AddDbContext<IdentitiesDbContext>(m=>m.UseNpgsql(builder.Configuration.GetConnectionString("defaultConnection"),b=>b.MigrationsHistoryTable("__EFMigrationsHistory", "Identity")));
-builder.Services.AddScoped<IStoreRepository, StoreRepository>();
-builder.Services.AddScoped<IStoreQueries>(s =>
-    new StoreQueries(builder.Configuration.GetConnectionString("defaultConnection")));
+builder.Services.AddStoreDbContext(builder.Configuration);
+builder.Services.AddStoreRepositories();
 
 // C#
 var app = builder.Build();
