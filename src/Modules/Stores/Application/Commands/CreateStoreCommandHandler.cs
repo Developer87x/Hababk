@@ -14,7 +14,8 @@ public class CreateStoreCommandHandler: ICommandHandler<CreateStoreCommand,bool>
     
     public async Task<bool> Handle(CreateStoreCommand request, CancellationToken cancellationToken)
     {
-        var store = Store.Create(request.StoreName!,null,request.UserId!);
+      
+        var store = Store.Create(request.StoreName!,null,request.UserId!,request.ContactEmail!,request.ContactNumber!);
          await _storeRepository.AddAsync(store);
          var result = await _storeRepository.UnitOfWork.SaveEntitiesAsync(cancellationToken);
          return result;

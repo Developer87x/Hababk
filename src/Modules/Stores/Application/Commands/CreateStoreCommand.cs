@@ -5,5 +5,7 @@ namespace Hababk.Modules.Stores.Application.Commands;
 public class CreateStoreCommand : ICommand<bool>
 {
     public string? StoreName { get; set; }
+    public string? ContactNumber { get; set; }
+    public string? ContactEmail { get; set; }
     public string? UserId { get; set; }
 }

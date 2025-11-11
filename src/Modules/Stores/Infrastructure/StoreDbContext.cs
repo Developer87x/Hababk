@@ -1,3 +1,4 @@
+using Domain.ValueObjects;
 using Hababk.BuildingBlocks.Domain;
 using Hababk.Modules.Stores.Domain.Entities;
 using Hababk.Modules.Stores.Infrastructure.Configurations.EntityTypedConfigurations;
@@ -12,6 +13,7 @@ public class StoreDbContext:DbContext,IUnitOfWork
     private readonly IMediator _mediator;
     public const string DefaultSchema = "Store";
     public DbSet<Store> Stores { get; set; }
+    public DbSet<Contact> Contacts { get; set; }
    
     public StoreDbContext(DbContextOptions<StoreDbContext> options,IMediator mediator) : base(options)
     {

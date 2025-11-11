@@ -21,7 +21,7 @@ public class StoreQueries(string? connectionString) : IStoreQueries
     {
         await using var connection =  new NpgsqlConnection(_connectionString); 
         await connection.OpenAsync();
-       var result = await connection.QueryAsync<StoreDto>(sql: "SELECT * FROM \"Store\".\"Stores\"");
+       var result = await connection.QueryAsync<StoreDto>(sql: "SELECT Stores.StoreName, Contacts.ContactEmail as 'EmailAddress' FROM \"Store\".\"Stores\" JOIN \"Store\".\"Contacts\" ON \"Stores\".\"Id\" = \"Contacts\".\"StoreId\"");
        return result.AsQueryable();
     }
     

@@ -6,7 +6,11 @@ namespace Hababk.Modules.Stores.Domain.Entities;
 
 public class Store :Entity,IAggregateRoot
 {
-    private Store(Guid id,string storeName,string? description ,string userId) : base(id)
+    private Store():base(Guid.Empty)
+    {
+        
+    }
+    private Store(Guid id,string storeName,string? description ,string userId, Contact contact) : base(id)
     {
         StoreName = storeName;
         UserId = userId;
@@ -16,8 +20,10 @@ public class Store :Entity,IAggregateRoot
     public string? StoreName { get; private set; }
     public string? Description { get; private set; }
     public string UserId { get; private set; }
-    public Contact Contact { get; private set; }
-    public static Store Create(string storeName,string? description,string userId) => new(Guid.NewGuid(),storeName,description,userId);
+    public Contact?
+     Contact { get; private set; }
+    public static Store Create(string storeName,string? description,string userId,string email,string phoneNumber) 
+        => new(Guid.NewGuid(),storeName,description,userId,new Contact(email,phoneNumber));
     
     public override string? ToString() => StoreName;
 
