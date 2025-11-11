@@ -1,3 +1,4 @@
+using Domain.ValueObjects;
 using Hababk.BuildingBlocks.Domain;
 using Hababk.Modules.Stores.Domain.DomainEvents;
 
@@ -15,6 +16,7 @@ public class Store :Entity,IAggregateRoot
     public string? StoreName { get; private set; }
     public string? Description { get; private set; }
     public string UserId { get; private set; }
+    public Contact Contact { get; private set; }
     public static Store Create(string storeName,string? description,string userId) => new(Guid.NewGuid(),storeName,description,userId);
     
     public override string? ToString() => StoreName;
