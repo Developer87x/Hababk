@@ -6,6 +6,7 @@ using Hababk.Modules.Stores.Application.Queries;
 using Hababk.Modules.Stores.Domain.Entities;
 using Hababk.Modules.Stores.Infrastructure;
 using Hababk.Modules.Stores.Infrastructure.Repositories;
+using Infrastructure.Configurations;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,6 +23,7 @@ builder.Services.AddMediatR(cfg =>
 //0550198724
 
 builder.Services.AddStoreDbContext(builder.Configuration);
+builder.Services.RegisterdDatabase(builder.Configuration);
 builder.Services.AddStoreRepositories();
 
 // C#

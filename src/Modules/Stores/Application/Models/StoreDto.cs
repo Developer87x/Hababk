@@ -10,7 +10,7 @@ public class StoreDto
 
 public class ContactDto
 {
-    public string? EmailAddress { get; set; }
+    public string? Email { get; set; }
     public string? PhoneNumber { get; set; }
 }
 

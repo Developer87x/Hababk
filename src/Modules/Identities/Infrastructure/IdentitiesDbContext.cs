@@ -9,7 +9,7 @@ namespace Hababk.Modules.Identities.Infrastructure;
 public class IdentitiesDbContext : DbContext, IUnitOfWork
 {
     private readonly IMediator _mediator;
-    public const string Schema = "Identity";
+    public const string Schema = "identity";
     public DbSet<User> Users { get; set; }
     public DbSet<Role> Roles { get; set; }
     public IdentitiesDbContext(DbContextOptions<IdentitiesDbContext> options, IMediator mediator) : base(options)
@@ -18,7 +18,7 @@ public class IdentitiesDbContext : DbContext, IUnitOfWork
     }
     public async Task<bool> SaveEntitiesAsync(CancellationToken cancellationToken = default)
     {
-        var domainEntities = this.ChangeTracker.Entries<Entity>().Where(x => x.Entity.DomainEvents != null && x.Entity.DomainEvents.Any()).ToList();
+        var domainEntities = this.ChangeTracker.Entries<Entity>().Where(x => x.Entity.DomainEvents != null && x.Entity.DomainEvents.Count != 0).ToList();
         var domainEvents = domainEntities.SelectMany(x => x.Entity.DomainEvents!).ToList();
 
         domainEntities.ForEach(x => x.Entity.ClearDomainEvents());

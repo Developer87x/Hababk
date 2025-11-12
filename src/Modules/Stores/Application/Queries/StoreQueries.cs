@@ -21,9 +21,13 @@ public class StoreQueries(string? connectionString) : IStoreQueries
     {
         await using var connection =  new NpgsqlConnection(_connectionString); 
         await connection.OpenAsync();
-       var result = await connection.QueryAsync<StoreDto>(sql: @"
-      SELECT * FROM ""Store"".""Stores"" as st
-     join ""Store"".""Contacts"" as ct on st.""Id""= ct.""StoreId""");
+       var result = await connection.QueryAsync<StoreDto, ContactDto,StoreDto>(sql: @"
+      SELECT * FROM ""store"".""stores"" as st
+     join ""store"".""contacts"" as ct on st.""Id""= ct.""StoreId""",(store,contact)=>
+       {
+           store.Contact=contact;
+           return store;
+       },splitOn: "StoreId");
        return result.AsQueryable();
     }
     
