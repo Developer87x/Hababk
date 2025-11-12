@@ -9,17 +9,11 @@ namespace Hababk.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class StoreController:ControllerBase
+public class StoreController(IMediator mediator, IStoreQueries storeQueries) : ControllerBase
 {
-    private readonly IMediator _mediator;
-    private readonly IStoreQueries _storeQueries;
-    public StoreController(IMediator mediator,IStoreQueries storeQueries)
-    {   
-        _mediator = mediator;
-        _storeQueries = storeQueries;
-    }
-    
-    
+    private readonly IMediator _mediator = mediator;
+    private readonly IStoreQueries _storeQueries = storeQueries;
+
     [HttpGet("GetList")]
     public async Task<IActionResult> Get()
     {

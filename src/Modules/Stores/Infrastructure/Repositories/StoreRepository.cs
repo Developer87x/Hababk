@@ -4,15 +4,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Hababk.Modules.Stores.Infrastructure.Repositories;
 
-public class StoreRepository :IStoreRepository
+public class StoreRepository(StoreDbContext context) : IStoreRepository
 {
-    private readonly StoreDbContext _context;
-    
-    public StoreRepository(StoreDbContext context)
-    {
-        _context = context;
-    }
-    
+    private readonly StoreDbContext _context = context;
+
     public IUnitOfWork UnitOfWork => _context;
     public async Task<Store?> GetByIdAsync(Guid id) =>await _context.Stores.Where(s=>s.Id==id).FirstOrDefaultAsync();
     public async Task<Store> AddAsync(Store store)

@@ -8,16 +8,12 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace Hababk.Modules.Stores.Infrastructure;
 
-public class StoreDbContext:DbContext,IUnitOfWork
+public class StoreDbContext(DbContextOptions<StoreDbContext> options, IMediator mediator) : DbContext(options),IUnitOfWork
 {
-    private readonly IMediator _mediator;
+    private readonly IMediator _mediator = mediator;
     public const string DefaultSchema = "store";
     public DbSet<Store> Stores { get; set; }
-   
-    public StoreDbContext(DbContextOptions<StoreDbContext> options,IMediator mediator) : base(options)
-    {
-        _mediator = mediator;
-    }
+
     public async Task<bool> SaveEntitiesAsync(CancellationToken cancellationToken = default)
     {
         var domainEntities = this.ChangeTracker.Entries<Entity>().Where(x => x.Entity.DomainEvents != null && x.Entity.DomainEvents.Any()).ToList();

@@ -2,9 +2,9 @@ using MediatR;
 
 namespace Hababk.BuildingBlocks.Domain;
 
-public abstract class Entity
+public abstract class Entity(Guid id)
 {
-    public Guid Id { get; protected set; }
+    public Guid Id { get; protected set; } = id;
     private IList<IDomainEvent>? _domainEvents;
 
     public IReadOnlyCollection<IDomainEvent>? DomainEvents => _domainEvents?.AsReadOnly();
@@ -16,5 +16,4 @@ public abstract class Entity
     }
 
     public void ClearDomainEvents() => _domainEvents?.Clear();
-    protected Entity(Guid id) => Id = id;
 }

@@ -2,16 +2,11 @@ using System.Reflection;
 
 namespace Hababk.BuildingBlocks.Domain;
 
-public abstract class Enumeration:IComparable
+public abstract class Enumeration(Guid id, string value) : IComparable
 {
-    private Guid Id { get; }
-    private string Value { get;  }
+    private Guid Id { get; } = id;
+    private string Value { get; } = value;
 
-    protected Enumeration(Guid id, string value)
-    {
-        Id = id;
-        Value = value;
-    }
     public int CompareTo(object? obj)
     {
         ArgumentNullException.ThrowIfNull(obj);

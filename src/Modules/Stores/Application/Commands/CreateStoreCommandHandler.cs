@@ -3,15 +3,10 @@ using Hababk.Modules.Stores.Domain.Entities;
 
 namespace Hababk.Modules.Stores.Application.Commands;
 
-public class CreateStoreCommandHandler: ICommandHandler<CreateStoreCommand,bool>
+public class CreateStoreCommandHandler(IStoreRepository storeRepository) : ICommandHandler<CreateStoreCommand,bool>
 {
-    private readonly IStoreRepository _storeRepository;
+    private readonly IStoreRepository _storeRepository = storeRepository;
 
-    public CreateStoreCommandHandler(IStoreRepository storeRepository)
-    {
-        _storeRepository = storeRepository;
-    }
-    
     public async Task<bool> Handle(CreateStoreCommand request, CancellationToken cancellationToken)
     {
       
