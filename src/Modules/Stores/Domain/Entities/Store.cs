@@ -15,13 +15,13 @@ public class Store :Entity,IAggregateRoot
         StoreName = storeName;
         UserId = userId;
         Description = description;
+        Contact = contact;
         this.AddDomainEvent(new StoreCreatedEvent(this));
     } 
     public string? StoreName { get; private set; }
     public string? Description { get; private set; }
     public string UserId { get; private set; }
-    public Contact?
-     Contact { get; private set; }
+    public Contact? Contact { get; private set; }
     public static Store Create(string storeName,string? description,string userId,string email,string phoneNumber) 
         => new(Guid.NewGuid(),storeName,description,userId,new Contact(email,phoneNumber));
     
