@@ -15,7 +15,7 @@ namespace Ha
         {
             // Configuration logic here
             storeServices.AddDbContext<StoreDbContext>(options =>
-                 options.UseNpgsql(configuration.GetConnectionString("defaultConnection"), s => s.MigrationsHistoryTable("__EFMigrationsHistory", "Store").EnableRetryOnFailure(3)));
+                 options.UseNpgsql(configuration.GetConnectionString("defaultConnection"), s => s.MigrationsHistoryTable("__EFMigrationsHistory", "store").EnableRetryOnFailure(3)));
             storeServices.AddScoped<IStoreQueries>(sq => new StoreQueries(configuration.GetConnectionString("defaultConnection")));
             return storeServices;
         }

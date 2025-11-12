@@ -11,7 +11,7 @@ namespace Hababk.Modules.Stores.Infrastructure;
 public class StoreDbContext:DbContext,IUnitOfWork
 {
     private readonly IMediator _mediator;
-    public const string DefaultSchema = "Store";
+    public const string DefaultSchema = "store";
     public DbSet<Store> Stores { get; set; }
    
     public StoreDbContext(DbContextOptions<StoreDbContext> options,IMediator mediator) : base(options)
@@ -35,6 +35,8 @@ public class StoreDbContext:DbContext,IUnitOfWork
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfiguration(new StoreEntityTypedConfiguration());
-        base.OnModelCreating(modelBuilder);
+        
+       
     }
+   
 }
