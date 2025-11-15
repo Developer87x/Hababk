@@ -7,6 +7,6 @@ public class CreatedUserEventHandler : IDomainEventHandler<CreatedUserDomainEven
 {
     public Task Handle(CreatedUserDomainEvent notification, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+       return Task.CompletedTask;
     }
 }

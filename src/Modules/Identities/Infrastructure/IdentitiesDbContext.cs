@@ -1,5 +1,6 @@
 using Hababk.BuildingBlocks.Domain;
 using Hababk.Modules.Identities.Domain.Entities;
+using Hababk.Modules.Identities.Infrastructure.Configurations.EntityTypedConfigurations;
 using Infrastructure.Configurations.EntityTypedConfigurations;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,7 @@ public class IdentitiesDbContext(DbContextOptions<IdentitiesDbContext> options, 
     public const string Schema = "identity";
     public DbSet<User> Users { get; set; }
     public DbSet<Role> Roles { get; set; }
+    public DbSet<UserRole> UserRoles { get; set; }
 
     public async Task<bool> SaveEntitiesAsync(CancellationToken cancellationToken = default)
     {
@@ -28,5 +30,9 @@ public class IdentitiesDbContext(DbContextOptions<IdentitiesDbContext> options, 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfiguration(new UserEntityTypedConfigurations());
+        modelBuilder.ApplyConfiguration(new RoleEntityTypedConfiguration());
+        modelBuilder.ApplyConfiguration(new UserRoleEntityTypedConfiguration());
+
+
     }
 }

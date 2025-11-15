@@ -3,7 +3,7 @@ using Hababk.Modules.Identities.Domain.DomainEvents;
 
 namespace Hababk.Modules.Identities.Domain.Entities;
 
-public class Role :Entity
+public class Role :Entity,IAggregateRoot
 {
     
     private Role(Guid id,string roleName) : base(id)
@@ -13,6 +13,10 @@ public class Role :Entity
     }
 
     public string RoleName { get; private set; }
+
+
+    public static Role Create(string roleName) 
+        => new(Guid.NewGuid(),roleName);
 
    
 }

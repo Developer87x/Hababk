@@ -12,11 +12,11 @@ namespace Infrastructure.Configurations.EntityTypedConfigurations
     {
         public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<User> builder)
         {
-            builder.ToTable("Users", IdentitiesDbContext.Schema);
+            builder.ToTable("users", IdentitiesDbContext.Schema);
             builder.HasKey(u => u.Id);
-            builder.Property(u => u.Username).IsRequired().HasMaxLength(100);
-            builder.Property(u => u.Email).IsRequired().HasMaxLength(200);
-            builder.Property(u => u.Password).IsRequired().HasMaxLength(500);
+            builder.Property(u => u.Username).IsRequired().HasMaxLength(100).HasColumnName("userName");
+            builder.Property(u => u.Email).IsRequired().HasMaxLength(100).HasColumnName("email");
+            builder.Property(u => u.Password).IsRequired().HasMaxLength(50).HasColumnName("password");
             
         }
     }
