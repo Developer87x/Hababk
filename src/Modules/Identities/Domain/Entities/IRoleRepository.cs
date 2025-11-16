@@ -2,7 +2,7 @@ using Hababk.BuildingBlocks.Domain;
 
 namespace Hababk.Modules.Identities.Domain.Entities;
 
-public interface IUserRepository :IRepository<User>
+public interface IRoleRepository : IRepository<Role>
 {
-    Task<User> AddAsync(User user);
+    Task<Role> AddAsync(Role role);
 }

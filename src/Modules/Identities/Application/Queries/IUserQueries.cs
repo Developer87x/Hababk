@@ -9,5 +9,5 @@ namespace Hababk.Modules.Identities.Application.Queries;
 
 public interface IUserQueries :IQuery<UserDto>
 {
-
+    Task<UserDto?> GetByUserNameAsync(string userName);
 }

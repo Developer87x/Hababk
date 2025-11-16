@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Ha
+namespace Hababk.Modules.Stores.Infrastructure.Configurations
 {
     public static  class RegisteredStoreModuleConfiguration
     {
