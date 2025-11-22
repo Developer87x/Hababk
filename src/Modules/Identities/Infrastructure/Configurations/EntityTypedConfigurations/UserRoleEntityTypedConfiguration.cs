@@ -15,12 +15,12 @@ public class UserRoleEntityTypedConfiguration : IEntityTypeConfiguration<UserRol
         builder.HasKey(ur => new { ur.UserId, ur.RoleId });
 
         builder.HasOne<Role>()
-               .WithMany()
-               .HasForeignKey(ur => ur.RoleId)
-               .OnDelete(DeleteBehavior.Cascade);
+            .WithMany()
+            .HasForeignKey(ur => ur.RoleId)
+            .OnDelete(DeleteBehavior.Cascade);
         builder.HasOne<User>()
-               .WithMany()
-               .HasForeignKey(ur => ur.UserId)
-               .OnDelete(DeleteBehavior.Cascade);
+            .WithMany()
+            .HasForeignKey(ur => ur.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

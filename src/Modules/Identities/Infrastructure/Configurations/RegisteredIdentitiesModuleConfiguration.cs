@@ -31,7 +31,7 @@ namespace Hababk.Modules.Identities.Infrastructure.Configurations
             services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<IUserQueries>(uq => new UserQueries(connectionString));
             services.AddScoped<IPasswordHash, Services.PasswordHashService>();
-           return services;
+            return services;
         }
     }
 }

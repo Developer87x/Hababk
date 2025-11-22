@@ -32,7 +32,7 @@ public class StoreController(IMediator mediator, IStoreQueries storeQueries) : C
             return BadRequest(errors);
         }
         var result =await _mediator.Send(command);
-         return Ok(result);
+        return Ok(result);
         
     }
 }
