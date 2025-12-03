@@ -32,7 +32,5 @@ public class IdentitiesDbContext(DbContextOptions<IdentitiesDbContext> options, 
         modelBuilder.ApplyConfiguration(new UserEntityTypedConfigurations());
         modelBuilder.ApplyConfiguration(new RoleEntityTypedConfiguration());
         modelBuilder.ApplyConfiguration(new UserRoleEntityTypedConfiguration());
-
-
     }
 }

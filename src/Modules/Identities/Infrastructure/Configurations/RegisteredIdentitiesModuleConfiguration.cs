@@ -1,7 +1,8 @@
+using Domain.Entities;
 using Hababk.Modules.Identities.Application.Queries;
 using Hababk.Modules.Identities.Domain.Entities;
 using Hababk.Modules.Identities.Infrastructure.Repositories;
-
+using Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -31,6 +32,7 @@ namespace Hababk.Modules.Identities.Infrastructure.Configurations
             services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<IUserQueries>(uq => new UserQueries(connectionString));
             services.AddScoped<IPasswordHash, Services.PasswordHashService>();
+            services.AddScoped<IAuthenticateService, AuthenticateService>();
             return services;
         }
     }

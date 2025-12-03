@@ -9,7 +9,6 @@ namespace Hababk.Modules.Identities.Infrastructure.Services
         {
             return BCrypt.Net.BCrypt.HashPassword(password);
         }
-
         public bool VerifyPassword(string plainPassword, string hashedPassword)
         {
             return BCrypt.Net.BCrypt.Verify(plainPassword, hashedPassword);

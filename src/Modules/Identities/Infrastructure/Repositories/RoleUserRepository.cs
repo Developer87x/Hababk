@@ -15,4 +15,5 @@ public class RoleUserRepository(IdentitiesDbContext dbContext) : IRoleUserReposi
         var entityEntry = await _dbContext.UserRoles.AddAsync(userRole);
         return entityEntry.Entity;
     }
+    
 }
