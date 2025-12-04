@@ -20,6 +20,12 @@ public class AuthenticationController(IAuthenticateService authenticateService) 
         {
             return BadRequest(validationResult.Errors);
         }   
-        return Ok();
+        var result = await _authenticateService.ValidateUserCredentials(login.UserName!, login.Password!);
+        if (!result)
+        {
+            return Unauthorized("Invalid username or password.");
+        }
+        var token = await _authenticateService.GenerateToken(login.UserName!);
+        return Ok(token);
     }
 }
