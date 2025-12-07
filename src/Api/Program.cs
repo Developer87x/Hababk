@@ -7,7 +7,30 @@ using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(cfg =>
+{
+    cfg.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+    {
+        Type= Microsoft.OpenApi.Models.SecuritySchemeType.Http,
+        Scheme= "Bearer",
+        BearerFormat= "JWT",
+    });
+    cfg.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
+    {
+        {
+            new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+            {
+                Reference= new Microsoft.OpenApi.Models.OpenApiReference
+                {
+                    Type= Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
+                    Id= "Bearer"
+                }
+            },
+            new string[]{}
+        }
+    });
+
+});
 builder.Services.AddMediatR(cfg =>
 {
     cfg.LicenseKey =

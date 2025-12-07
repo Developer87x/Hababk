@@ -1,6 +1,7 @@
 using Hababk.Modules.Identities.Application.Commands;
 using Hababk.Modules.Identities.Application.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Hababk.Api.Controllers;
@@ -31,6 +32,7 @@ public class UserController(IMediator mediator, IUserQueries userQueries) : Cont
         }
         return Ok(user);
     }
+    [Authorize]
     [HttpGet("GetList")]
     public async Task<IActionResult> Get()
     {
