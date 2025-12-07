@@ -25,7 +25,9 @@ namespace Infrastructure.Services
                 Subject = new System.Security.Claims.ClaimsIdentity(
             [
                 new Claim(ClaimTypes.Name, user?.Username ?? ""),
+                new Claim(ClaimTypes.Sid, user?.Id.ToString() ?? "")
             ]),
+
                 Expires = DateTime.UtcNow.AddMinutes(30),
                 Audience = _configuration["Jwt:Audience"],
                 Issuer = _configuration["Jwt:Issuer"],

@@ -10,21 +10,21 @@ public class UserQueries(string? connectionString) : IUserQueries
     {
         await using var connection = new Npgsql.NpgsqlConnection(_connectionString);
         connection.Open();
-        var result = await connection.QueryAsync<UserDto>(sql: $"SELECT \"userName\",email FROM \"identity\".\"users\" WHERE \"Id\"=@Id", new { Id = id});
+        var result = await connection.QueryAsync<UserDto>(sql: $"SELECT \"userName\",email FROM \"identity\".\"users\" WHERE \"Id\"=@Id", new { Id = id });
         return result.FirstOrDefault();
     }
 
     public async Task<UserDto?> GetByUserNameAsync(string userName)
     {
-         await using var connection = new Npgsql.NpgsqlConnection(_connectionString);
+        await using var connection = new Npgsql.NpgsqlConnection(_connectionString);
         connection.Open();
-        var result = await connection.QueryAsync<UserDto>(sql: $"SELECT * FROM \"identity\".\"users\" WHERE \"userName\"=@userName", param: new { userName = userName});
+        var result = await connection.QueryAsync<UserDto>(sql: $"SELECT * FROM \"identity\".\"users\" WHERE \"userName\"=@userName", param: new { userName = userName });
         return result.FirstOrDefault();
     }
 
     public async Task<IQueryable<UserDto>> GetListAsync()
     {
-         await using var connection = new Npgsql.NpgsqlConnection(_connectionString);
+        await using var connection = new Npgsql.NpgsqlConnection(_connectionString);
         connection.Open();
         var result = await connection.QueryAsync<UserDto>(sql: $"SELECT * FROM \"identity\".\"users\"");
         return result.AsQueryable();
