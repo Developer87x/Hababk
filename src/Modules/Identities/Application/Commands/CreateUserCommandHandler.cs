@@ -7,7 +7,6 @@ public class CreateUserCommandHandler(IUserRepository userRepository,IPasswordHa
 {
     private readonly IUserRepository _userRepository = userRepository;
     private readonly IPasswordHash _passwordHash= passwordHash;
-
     public async Task<bool> Handle(CreateUserCommand request, CancellationToken cancellationToken)
     {
         // Implementation for creating a user goes here.

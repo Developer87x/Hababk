@@ -43,6 +43,11 @@ public class UserController(IMediator mediator, IUserQueries userQueries) : Cont
     public async Task<IActionResult> Create([FromBody] CreateUserCommand command)
     {
         var result = await _mediator.Send(command);
+        if(!result)
+        {
+            return BadRequest("User could not be created.");
+        }
+
         return Ok(result);
     }
 }
