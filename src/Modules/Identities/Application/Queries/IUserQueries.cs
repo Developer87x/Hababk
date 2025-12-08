@@ -1,9 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Hababk.BuildingBlocks.Application;
-using Hababk.Modules.Identities.Application.Dtos;
+using Hababk.Modules.Identities.Application.Models;
 
 namespace Hababk.Modules.Identities.Application.Queries;
 

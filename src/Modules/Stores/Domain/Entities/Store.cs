@@ -1,16 +1,12 @@
-using Domain.ValueObjects;
 using Hababk.BuildingBlocks.Domain;
 using Hababk.Modules.Stores.Domain.DomainEvents;
+using Hababk.Modules.Stores.Domain.ValueObjects;
 
 namespace Hababk.Modules.Stores.Domain.Entities;
 
 public class Store :Entity,IAggregateRoot
 {
-    private Store():base(Guid.Empty)
-    {
-        
-    }
-    private Store(Guid id,string storeName,string? description ,string userId, Contact contact) : base(id)
+    protected Store(Guid id,string storeName,string? description ,string userId, Contact contact) : base(id)
     {
         StoreName = storeName;
         UserId = userId;

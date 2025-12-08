@@ -1,5 +1,6 @@
 using Hababk.BuildingBlocks.Application;
-using Hababk.Modules.Catalogs.Application.Dtos;
+
+using Hababk.Modules.Catalogs.Application.Models;
 
 namespace Hababk.Modules.Catalogs.Application.Queries;
 

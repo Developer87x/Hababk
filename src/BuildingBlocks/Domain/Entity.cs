@@ -1,5 +1,3 @@
-using MediatR;
-
 namespace Hababk.BuildingBlocks.Domain;
 
 public abstract class Entity(Guid id)

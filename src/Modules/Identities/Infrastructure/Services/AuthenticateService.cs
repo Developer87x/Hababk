@@ -1,16 +1,10 @@
-using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
-using System.Threading.Tasks;
-using Domain.Entities;
 using Hababk.Modules.Identities.Domain.Entities;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Infrastructure.Services
-{
+namespace Hababk.Modules.Identities.Infrastructure.Services;
     public class AuthenticateService(IConfiguration configuration, IUserRepository userRepository,IRoleUserRepository roleUserRepository,IRoleRepository roleRepository, IPasswordHash passwordHash) : IAuthenticateService
     {
         private readonly IUserRepository _userRepository = userRepository;
@@ -26,7 +20,7 @@ namespace Infrastructure.Services
             var roles = userRoles.Select(async ur => await _roleRepository.GetByIdAsync(ur.RoleId)).Select(r=>r.Result?.RoleName).ToList();
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Subject = new System.Security.Claims.ClaimsIdentity(
+                Subject = new ClaimsIdentity(
             [
                 new Claim(ClaimTypes.Name, user?.Username ?? ""),
                 new Claim(ClaimTypes.Sid, user?.Id.ToString() ?? ""),
@@ -51,4 +45,3 @@ namespace Infrastructure.Services
             return isValid;
         }
     }
-}

@@ -1,6 +1,5 @@
-using Application.Validation;
-using Domain.Entities;
-using Hababk.Modules.Identities.Application.Dtos;
+using Hababk.Modules.Identities.Application.Models;
+using Hababk.Modules.Identities.Application.Validation;
 using Hababk.Modules.Identities.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,7 +14,7 @@ public class AuthenticationController(IAuthenticateService authenticateService) 
     public async Task<IActionResult> Login([FromBody] LoginDto login)
     {
         var userValidator = new  UserValidator();
-        var validationResult = userValidator.Validate(login);
+        var validationResult = await userValidator.ValidateAsync(login);
         if (!validationResult.IsValid)
         {
             return BadRequest(validationResult.Errors);

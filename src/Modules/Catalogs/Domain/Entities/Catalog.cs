@@ -5,13 +5,14 @@ namespace Hababk.Modules.Catalogs.Domain.Entities;
 
 public class Catalog :Entity,IAggregateRoot
 {
-    private Catalog(Guid id, CatalogType? catalogType, string? catalogName, string? description, decimal price, string storeId) : base(id)
+    private Catalog(Guid id, Guid catalogId , CatalogType? catalogType, string? catalogName, string? description, decimal price, string storeId) : base(id)
     {
         CatalogType = catalogType;
         CatalogName = catalogName;
         Description = description;
         Price = price;
         StoreId = storeId;
+        CatalogId = catalogId;
         this.AddDomainEvent(new CatalogCreatedEvent(this));
     }
     public string? CatalogName { get; private set; }
@@ -21,9 +22,9 @@ public class Catalog :Entity,IAggregateRoot
     public Guid CatalogId { get; private set; }
     public CatalogType? CatalogType { get; private set; }
 
-    public static Catalog Create(Guid id, CatalogType? catalogType, string? catalogName, string? description, decimal price,string storeId)
+    public static Catalog Create(Guid id, Guid catalogId, CatalogType? catalogType, string? catalogName, string? description, decimal price,string storeId)
     {
-        return new Catalog(id, catalogType, catalogName, description, price,storeId);
+        return new Catalog(id, catalogId,catalogType, catalogName, description, price,storeId);
     }
     
     

@@ -1,4 +1,3 @@
-using FluentValidation;
 using MediatR;
 
 namespace Hababk.BuildingBlocks.Application;

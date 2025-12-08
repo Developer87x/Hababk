@@ -1,4 +1,4 @@
-namespace Hababk.Modules.Catalogs.Application.Dtos;
+namespace Hababk.Modules.Catalogs.Application.Models;
 
 public class CatalogDto
 {

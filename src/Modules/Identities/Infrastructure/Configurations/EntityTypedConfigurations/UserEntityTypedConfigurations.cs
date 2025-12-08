@@ -1,13 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Hababk.Modules.Identities.Domain.Entities;
-using Hababk.Modules.Identities.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Configurations.EntityTypedConfigurations
-{
+namespace Hababk.Modules.Identities.Infrastructure.Configurations.EntityTypedConfigurations;
     public class UserEntityTypedConfigurations : IEntityTypeConfiguration<User>
     {
         public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<User> builder)
@@ -20,4 +14,3 @@ namespace Infrastructure.Configurations.EntityTypedConfigurations
             
         }
     }
-}

@@ -1,7 +1,3 @@
-// ReSharper disable All
-
-using MediatR;
-
 namespace Hababk.BuildingBlocks.Domain;
 
 public abstract class ValueObject
@@ -32,7 +28,7 @@ public abstract class ValueObject
 
     public override int GetHashCode()
     {
-        return GetEqualityComponents().Select(x => x !=null ? x.GetHashCode() : 0).Aggregate((x, y) => x ^ y);  
+        return GetEqualityComponents().Select(x => x.GetHashCode()).Aggregate((x, y) => x ^ y);  
     }
 
     public ValueObject? Copy => this.MemberwiseClone() as ValueObject;

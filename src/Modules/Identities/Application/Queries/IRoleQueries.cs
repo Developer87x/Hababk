@@ -1,4 +1,5 @@
-using Application.Dtos;
+
+using Hababk.Modules.Identities.Application.Models;
 
 namespace Hababk.Modules.Identities.Application.Queries;
 

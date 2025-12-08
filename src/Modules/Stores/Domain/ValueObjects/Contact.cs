@@ -1,19 +1,12 @@
 using Hababk.BuildingBlocks.Domain;
 
-namespace Domain.ValueObjects
+namespace Hababk.Modules.Stores.Domain.ValueObjects
 {
-    public class Contact : ValueObject
+    public class Contact(string email, string phoneNumber) : ValueObject
     {
-        private Contact() { }
+        public string? EmailAddress { get;  } = email;
+        public string? PhoneNumber { get;  } = phoneNumber;
 
-        public Contact(string email, string phoneNumber)
-        {
-            EmailAddress = email;
-            PhoneNumber = phoneNumber;
-        }
-
-        public string? EmailAddress { get; set; }
-        public string? PhoneNumber { get; set; }
         protected override IEnumerable<object> GetEqualityComponents()
         {
 

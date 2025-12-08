@@ -1,7 +1,6 @@
 using Hababk.BuildingBlocks.Domain;
 using Hababk.Modules.Identities.Domain.Entities;
 using Hababk.Modules.Identities.Infrastructure.Configurations.EntityTypedConfigurations;
-using Infrastructure.Configurations.EntityTypedConfigurations;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 

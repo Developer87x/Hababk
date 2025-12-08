@@ -44,8 +44,8 @@ builder.Services.AddMediatR(cfg =>
 });
 builder.Services.AddStoreDbContext(builder.Configuration);
 builder.Services.AddStoreRepositories();
-builder.Services.RegisterdIdentityDatabase(builder.Configuration);
-builder.Services.RegisterdIdentityRepositoriesAndServices(builder.Configuration);
+builder.Services.RegisteredIdentityDatabase(builder.Configuration);
+builder.Services.RegisteredIdentityRepositoriesAndServices(builder.Configuration);
 builder.Services.AddAuthentication(auth =>
 {
     auth.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
