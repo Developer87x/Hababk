@@ -1,7 +1,6 @@
 using Hababk.Modules.Stores.Application.Commands;
 using Hababk.Modules.Stores.Application.Queries;
 using Hababk.Modules.Stores.Application.Validations;
-using Hababk.Modules.Stores.Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 

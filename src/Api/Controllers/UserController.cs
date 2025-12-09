@@ -16,10 +16,6 @@ public class UserController(IMediator mediator, IUserQueries userQueries) : Cont
     public async Task<IActionResult> GetById(Guid id)
     {
         var user = await _userQueries.GetByIdAsync(id);
-        if (user == null)
-        {
-            return NotFound();
-        }
         return Ok(user);
     }
     [HttpGet("GetUserByUserName/{userName}")]

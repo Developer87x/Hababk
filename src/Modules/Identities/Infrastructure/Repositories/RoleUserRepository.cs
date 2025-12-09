@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Hababk.BuildingBlocks.Domain;
 using Hababk.Modules.Identities.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
